@@ -1,0 +1,20 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="AndroidTestSuite" verbose="1" parallel="tests" thread-count="2">
+
+    <test name="Test on device 1">
+        <parameter name="udid" value="localhost:12345"/>
+        <parameter name="systemPort" value="8200"/>
+        <classes>
+            <class name="ParallelTests" />
+        </classes>
+    </test>
+    <test name="Test on device 2">
+        <parameter name="udid" value="localhost:12346"/>
+        <parameter name="systemPort" value="8201"/>
+        <classes>
+            <class name="ParallelTests" />
+        </classes>
+    </test>
+
+</suite>
