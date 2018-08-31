@@ -26,17 +26,17 @@ public class ParallelTests {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "uiautomator2");
         capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "Android Emulator");
+        capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
         capabilities.setCapability(MobileCapabilityType.UDID, udid);
         capabilities.setCapability(AndroidMobileCapabilityType.SYSTEM_PORT, systemPort);
         capabilities.setCapability(MobileCapabilityType.APP, "/Users/ekwok/Documents/Appium/Seetest/Apps/appriddle.apk");
-        capabilities.setCapability(MobileCapabilityType.ORIENTATION, "PORTRAIT");
         capabilities.setCapability(MobileCapabilityType.NO_RESET, false);
 
         driver = new AndroidDriver<MobileElement>(url, capabilities);
 
         // Setup implicit wait to 10 seconds to wait for mobile elements.
         // Use a higher value if your mobile elements take time to show up
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        //driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
     @Test
