@@ -6,14 +6,14 @@
         <parameter name="udid" value="localhost:12345"/>
         <parameter name="systemPort" value="8200"/>
         <classes>
-            <class name="ParallelTests" />
+            <class name="FirstRiddleTest" />
         </classes>
     </test>
     <test name="Test on device 2">
         <parameter name="udid" value="localhost:12346"/>
         <parameter name="systemPort" value="8201"/>
         <classes>
-            <class name="ParallelTests" />
+            <class name="SecondRiddleTest" />
         </classes>
     </test>
 
