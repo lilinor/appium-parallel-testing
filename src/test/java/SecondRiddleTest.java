@@ -24,7 +24,7 @@ public class SecondRiddleTest extends BaseTest {
         AndroidElement answerTxtview = (AndroidElement) driver.findElementById("riddlecheck");
         //takeScreenShot();
 
-        Assert.assertEquals(answerTxtview.getText(),"true");
+        Assert.assertEquals(answerTxtview.getText(),"Correct");
 
         return ;
     }
