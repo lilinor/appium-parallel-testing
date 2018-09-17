@@ -2,6 +2,10 @@
 
 <suite name="AndroidTestSuite" verbose="1" parallel="tests" thread-count="2">
 
+    <listeners>
+        <listener class-name="AnnotationTransformer"/>
+    </listeners>
+
     <test name="Test on device 1">
         <parameter name="udid" value="localhost:12345"/>
         <parameter name="systemPort" value="8200"/>
