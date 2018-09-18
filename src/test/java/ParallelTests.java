@@ -29,7 +29,8 @@ public class ParallelTests {
         capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
         capabilities.setCapability(MobileCapabilityType.UDID, udid);
         capabilities.setCapability(AndroidMobileCapabilityType.SYSTEM_PORT, systemPort);
-        capabilities.setCapability(MobileCapabilityType.APP, "/Users/ekwok/Documents/Appium/Seetest/Apps/appriddle.apk");
+        capabilities.setCapability(AndroidMobileCapabilityType.APP_PACKAGE, "com.workingagenda.devinettes");
+        capabilities.setCapability(AndroidMobileCapabilityType.APP_ACTIVITY, "MainActivity");
         capabilities.setCapability(MobileCapabilityType.NO_RESET, false);
 
         driver = new AndroidDriver<MobileElement>(url, capabilities);
