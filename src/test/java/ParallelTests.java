@@ -1,16 +1,19 @@
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
+import io.appium.java_client.android.AndroidKeyCode;
 import io.appium.java_client.remote.AndroidMobileCapabilityType;
 import io.appium.java_client.remote.MobileCapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.By;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+import org.testng.Assert;
 
 import java.net.URL;
-import java.util.concurrent.TimeUnit;
+import java.util.List;
 
 public class ParallelTests {
 
@@ -38,15 +41,24 @@ public class ParallelTests {
     }
 
     @Test
+    public void test() {
+    }
+
+    @Test
     public void testAnswerRiddle() throws Exception {
 
         //get thread ID
         long id = Thread.currentThread().getId();
         System.out.println("testText Thread ID is : " +id);
-        //click on the first riddle
-        AndroidElement textView = (AndroidElement) driver.findElementById("riddle_title");
+
+        List riddleList = driver.findElements(By.id("riddle_title"));
+
+        /*----- FIRST TEST ------*/
+        AndroidElement textView = (AndroidElement) riddleList.get(0);
+
         System.out.println(textView.getText());
         textView.click();
+
         //riddlescreen - answer 1st question
         AndroidElement editText = (AndroidElement) driver.findElementById("guess");
         editText.sendKeys("human");
@@ -55,12 +67,27 @@ public class ParallelTests {
         btnGuess.click();
         //check answer is correct
         AndroidElement answerTxtview = (AndroidElement) driver.findElementById("riddlecheck");
-        //takeScreenShot();
 
-        if(answerTxtview.getText().equals("Correct"))
-            System.out.println("true");
-        else
-            throw new Exception("wrong");
+        Assert.assertEquals(answerTxtview.getText(),"Correct");
+
+        //Go back to the previous screen to launch the second test
+        driver.pressKeyCode(AndroidKeyCode.BACK);
+
+        /*----- SECOND TEST ------*/
+        //click on the 2nd riddle
+        textView = (AndroidElement) riddleList.get(2);
+        System.out.println(textView.getText());
+        textView.click();
+        //riddlescreen - answer 1st question
+        editText = (AndroidElement) driver.findElementById("guess");
+        editText.sendKeys("vein");
+        //validate answer
+        btnGuess = (AndroidElement) driver.findElementById("btnGuess");
+        btnGuess.click();
+        //check answer is correct
+        answerTxtview = (AndroidElement) driver.findElementById("riddlecheck");
+
+        Assert.assertEquals(answerTxtview.getText(),"Correct");
 
         return ;
     }
