@@ -42,7 +42,8 @@ public class ParallelTests {
         capabilities.setCapability(AndroidMobileCapabilityType.SYSTEM_PORT, systemPort);
         capabilities.setCapability(AndroidMobileCapabilityType.APP_PACKAGE, "com.workingagenda.devinettes");
         capabilities.setCapability(AndroidMobileCapabilityType.APP_ACTIVITY, "MainActivity");
-        capabilities.setCapability(MobileCapabilityType.NO_RESET, false);
+        capabilities.setCapability(MobileCapabilityType.NO_RESET, true);
+        capabilities.setCapability(MobileCapabilityType.FULL_RESET, false);
         capabilities.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, 60000);
 
         driver = new AndroidDriver<MobileElement>(url, capabilities);
@@ -71,15 +72,9 @@ public class ParallelTests {
         //check answer is correct
         AndroidElement answerTxtview = (AndroidElement) driver.findElementById("riddlecheck");
 
-        //Creates a random list for flaky tests
-        ArrayList<String> list = new ArrayList<String>();
-        list.add("Correct");
-        list.add("false");
-        String random = list.get(new Random().nextInt(list.size()));
-
         isFirstPlayed = false;
 
-        Assert.assertEquals(answerTxtview.getText(),random);
+        Assert.assertEquals(answerTxtview.getText(),"false");
 
         return ;
     }
