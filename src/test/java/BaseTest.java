@@ -33,9 +33,6 @@ public class BaseTest {
 
         driver = new AndroidDriver<MobileElement>(url, capabilities);
 
-        // Setup implicit wait to 10 seconds to wait for mobile elements.
-        // Use a higher value if your mobile elements take time to show up
-        //driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
     @AfterTest
