@@ -17,7 +17,7 @@ import java.util.List;
 
 public class ParallelTests {
 
-    private final static String APPIUM_SERVER_URL = "http://localhost:4723/wd/hub";
+    private final static String APPIUM_SERVER_URL = "http://localhost:4723";
     private AndroidDriver driver;
 
     @BeforeTest(alwaysRun = true)
